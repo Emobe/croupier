@@ -30,7 +30,7 @@
     "url": "https://github.com/Emobe/croupier"
   },
   "scripts": {
-    "build": "yarn run lint && tsc",
+    "build": "yarn run lint && tsc --declaration",
     "test": "jest",
     "watch": "tsc -w",
     "lint": "tslint ./src/**/*.ts"
