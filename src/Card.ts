@@ -1,8 +1,8 @@
 export enum Suit {
-  Diamonds = "Diamonds",
-  Spades = "Spades",
-  Hearts = "Hearts",
-  Clubs = "Clubs"
+  Diamonds = 'Diamonds',
+  Spades = 'Spades',
+  Hearts = 'Hearts',
+  Clubs = 'Clubs'
 }
 
 export interface iCard {

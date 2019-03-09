@@ -1,13 +1,16 @@
-import { default as Card, Rank, Suit, iCard } from "./Card";
-export default class Deck {
-  private cards: Array<Card> = [];
+import { default as Card, iCard, Rank, Suit } from './Card';
 
-  fillDeck() {
+export type CardList = Set<Card>;
+
+export default class Deck {
+  private cards: CardList = new Set<Card>();
+
+  constructor() {
     let rankValue: Rank;
-    for (let suit in Suit) {
-      for (let rank in Rank) {
+    for (const suit in Suit) {
+      for (const rank in Rank) {
         if (!isNaN(Number(rank))) {
-          this.cards.push(
+          this.cards.add(
             new Card({
               suit: Suit[suit] as Suit,
               rank: Rank[rank as keyof typeof Rank]
@@ -16,35 +19,15 @@ export default class Deck {
         }
       }
     }
-    return this;
   }
 
-  shuffle() {
-    let currentIndex = this.cards.length;
-    let temporaryValue, randomIndex;
+  public setFromArray() {}
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = this.cards[currentIndex];
-      this.cards[currentIndex] = this.cards[randomIndex];
-      this.cards[randomIndex] = temporaryValue;
-    }
-  }
-
-  get Cards(): Array<Card> {
+  get Cards(): CardList {
     return this.cards;
   }
 
-	take(amount: number): Array<Card>{
-		return this.cards.splice(-Math.abs(amount), amount);
-  }
-  
-  addToBottom(card: Card): void {
-    this.cards.push(card);
+  set Cards(cards: CardList) {
+    this.cards = cards;
   }
 }
