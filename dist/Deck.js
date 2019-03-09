@@ -11,19 +11,14 @@ const Card_1 = __importStar(require("./Card"));
 class Deck {
     constructor() {
         this.cards = new Set();
-        let rankValue;
-        for (const suit in Card_1.Suit) {
-            for (const rank in Card_1.Rank) {
+        Object.keys(Card_1.Suit).filter(suit => {
+            Object.keys(Card_1.Rank).filter(rank => {
                 if (!isNaN(Number(rank))) {
-                    this.cards.add(new Card_1.default({
-                        suit: Card_1.Suit[suit],
-                        rank: Card_1.Rank[rank]
-                    }));
+                    this.cards.add(new Card_1.default(Card_1.Suit[suit], Card_1.Rank[rank]));
                 }
-            }
-        }
+            });
+        });
     }
-    setFromArray() { }
     get Cards() {
         return this.cards;
     }
