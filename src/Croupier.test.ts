@@ -1,3 +1,4 @@
+import Card, { Rank, Suit } from './Card';
 import Croupier from './Croupier';
 import Deck from './Deck';
 
@@ -14,7 +15,7 @@ describe('Croupier Package', () => {
 
       croupier.shuffle(deck, 0.5);
 
-      const expected = new Set([
+      const expectedCards = [
         { suit: 'Diamonds', rank: 'Two' },
         { suit: 'Hearts', rank: 'Nine' },
         { suit: 'Diamonds', rank: 'Three' },
@@ -67,7 +68,9 @@ describe('Croupier Package', () => {
         { suit: 'Clubs', rank: 'King' },
         { suit: 'Spades', rank: 'Ace' },
         { suit: 'Hearts', rank: 'Two' }
-      ]);
+      ];
+
+      const expected = new Set(expectedCards);
 
       expect(deck.Cards).toEqual(expected);
     });
@@ -82,7 +85,7 @@ describe('Croupier Package', () => {
   describe('Deck', () => {
     it('should create a deck with 52 cards in order', () => {
       const deck = new Deck();
-      const expected = new Set([
+      const expectedCards = [
         { suit: 'Diamonds', rank: 'Two' },
         { suit: 'Diamonds', rank: 'Three' },
         { suit: 'Diamonds', rank: 'Four' },
@@ -135,7 +138,9 @@ describe('Croupier Package', () => {
         { suit: 'Clubs', rank: 'Queen' },
         { suit: 'Clubs', rank: 'King' },
         { suit: 'Clubs', rank: 'Ace' }
-      ]);
+      ];
+
+      const expected = new Set(expectedCards);
 
       expect(deck.Cards).toEqual(expected);
     });
