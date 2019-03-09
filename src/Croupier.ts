@@ -16,13 +16,10 @@ export default class Croupier {
     let temporaryValue;
     let randomIndex;
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-      // Pick a remaining element...
       randomIndex = Math.floor(seed * currentIndex);
       currentIndex -= 1;
 
-      // And swap it with the current element.
       temporaryValue = cards[currentIndex];
       cards[currentIndex] = cards[randomIndex];
       cards[randomIndex] = temporaryValue;
