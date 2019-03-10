@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Croupier_1 = __importDefault(require("./Croupier"));
 var Card_1 = require("./Card");
 exports.Card = Card_1.default;
+exports.Suit = Card_1.Suit;
+exports.Rank = Card_1.Rank;
 var Deck_1 = require("./Deck");
 exports.Deck = Deck_1.default;
 exports.default = Croupier_1.default;
