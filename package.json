@@ -34,6 +34,6 @@
     "build": "yarn run lint && tsc --declaration",
     "test": "jest",
     "watch": "tsc -w",
-    "lint": "tslint ./src/**/*.ts"
+    "lint": "tslint -p ./ --fix"
   }
 }
