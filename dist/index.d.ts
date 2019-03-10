@@ -1,4 +1,4 @@
 import Croupier from './Croupier';
-export * from './Card';
-export * from './Deck';
+export { default as Card } from './Card';
+export { default as Deck } from './Deck';
 export default Croupier;
