@@ -1,7 +1,7 @@
 {
   "name": "croupier",
   "description": "A pack of playing cards",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Anthony Shuker <anthony.r.shuker@gmail.com>",
   "bugs": {
     "url": "https://github.com/Emobe/croupier/issues",
