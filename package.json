@@ -16,15 +16,13 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.2.2"
   },
-  "files": [
-    "./dist/**/*"
-  ],
   "homepage": "https://github.com/Emobe/croupier",
   "keywords": [
     "playing cards",
     "typescript"
   ],
   "license": "MIT",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Emobe/croupier"
