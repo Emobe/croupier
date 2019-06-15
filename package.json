@@ -16,6 +16,9 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.2.2"
   },
+  "files": [
+    "./dist/**/*"
+  ],
   "homepage": "https://github.com/Emobe/croupier",
   "keywords": [
     "playing cards",
