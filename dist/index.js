@@ -10,5 +10,7 @@ exports.Suit = Card_1.Suit;
 exports.Rank = Card_1.Rank;
 var Deck_1 = require("./Deck");
 exports.Deck = Deck_1.default;
+var Hand_1 = require("./Hand");
+exports.Hand = Hand_1.default;
 exports.default = Croupier_1.default;
 //# sourceMappingURL=index.js.map
