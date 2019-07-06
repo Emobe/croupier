@@ -6,4 +6,6 @@ var Croupier_1 = require("./Croupier");
 exports.Croupier = Croupier_1.default;
 var Card_1 = require("./Card");
 exports.Card = Card_1.default;
+exports.Rank = Card_1.Rank;
+exports.Suit = Card_1.Suit;
 //# sourceMappingURL=index.js.map
