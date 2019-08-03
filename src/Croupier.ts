@@ -1,17 +1,34 @@
-import Card from './Card';
-import Deck from './Deck';
+import Card, { Suit, Rank } from './Card';
 
 export default class Croupier {
-  public createDeck(shuffled: boolean = true) {
-    const deck = new Deck();
+  private cards: Card[] = [];
+  public createDeck(shuffled: boolean = true, seed: number = Math.random()) {
+    Object.keys(Suit).filter(suit => {
+      Object.keys(Rank).filter(rank => {
+        if (!isNaN(Number(rank))) {
+          this.cards.push(
+            new Card(
+              Suit[suit as keyof typeof Suit],
+              Rank[rank as keyof typeof Rank]
+            )
+          );
+        }
+      });
+    });
     if (shuffled) {
-      this.shuffle(deck);
+      this.shuffle(this.cards, seed);
     }
-    return deck;
   }
 
-  public shuffle(deck: Deck, seed: number = Math.random()) {
-    const cards = Array.from(deck.Cards);
+  public take(amount: number): Card[] {
+    return this.cards.splice(-Math.abs(amount), amount);
+  }
+
+  public get Cards(): Card[] {
+    return this.cards;
+  }
+
+  private shuffle(cards: Card[], seed: number) {
     let currentIndex = cards.length;
     let temporaryValue;
     let randomIndex;
@@ -23,12 +40,6 @@ export default class Croupier {
       temporaryValue = cards[currentIndex];
       cards[currentIndex] = cards[randomIndex];
       cards[randomIndex] = temporaryValue;
-
-      deck.Cards = new Set(cards);
     }
-  }
-  public take(amount: number, deck: Deck): Card[] {
-    const cards = Array.from(deck.Cards);
-    return cards.splice(-Math.abs(amount), amount);
   }
 }

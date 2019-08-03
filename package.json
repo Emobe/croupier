@@ -3,19 +3,6 @@
   "description": "A pack of playing cards",
   "version": "1.0.1",
   "author": "Anthony Shuker <anthony.r.shuker@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/Emobe/croupier/issues",
-    "email": "anthony.r.shuker@gmail.com"
-  },
-  "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "jest": "^24.8.0",
-    "prettier": "^1.16.4",
-    "ts-jest": "^24.0.0",
-    "tslint": "^5.13.1",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.2.2"
-  },
   "homepage": "https://github.com/Emobe/croupier",
   "keywords": [
     "playing cards",
@@ -29,8 +16,21 @@
   },
   "scripts": {
     "build": "yarn run lint && tsc",
-    "test": "jest",
+    "test": "ts-node node_modules/tape-watch/bin/tape-watch src/**/*",
     "watch": "tsc -w",
     "lint": "tslint -p ./ --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/Emobe/croupier/issues",
+    "email": "anthony.r.shuker@gmail.com"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.2.33",
+    "prettier": "^1.16.4",
+    "tape": "^4.11.0",
+    "tape-watch": "^2.3.0",
+    "tslint": "^5.13.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
   }
 }

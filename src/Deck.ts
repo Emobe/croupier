@@ -1,15 +1,13 @@
 import { default as Card, Rank, Suit } from './Card';
 
-export type CardList = Set<Card>;
-
 export default class Deck {
-  private cards: CardList = new Set<Card>();
+  private cards: Card[] = [];
 
   constructor() {
     Object.keys(Suit).filter(suit => {
       Object.keys(Rank).filter(rank => {
         if (!isNaN(Number(rank))) {
-          this.cards.add(
+          this.cards.push(
             new Card(
               Suit[suit as keyof typeof Suit],
               Rank[rank as keyof typeof Rank]
@@ -20,11 +18,11 @@ export default class Deck {
     });
   }
 
-  get Cards(): CardList {
+  get Cards(): Card[] {
     return this.cards;
   }
 
-  set Cards(cards: CardList) {
+  set Cards(cards: Card[]) {
     this.cards = cards;
   }
 }
