@@ -127,7 +127,7 @@ test('croupier.createDeck() should create a shuffled deck', t => {
   t.end();
 });
 
-test('croupier.take(2) should splice top two cards', t => {
+test('croupier.take(2) should take top two cards', t => {
   const croupier = new Croupier();
   croupier.createDeck();
   const expected = [croupier.Cards[50], croupier.Cards[51]];

@@ -1,7 +1,12 @@
-import Card, { Suit, Rank } from './Card';
+import Card, { Rank, Suit } from './Card';
 
 export default class Croupier {
   private cards: Card[] = [];
+  /**
+   *
+   * @param shuffled Whether the deck should be shuffled or not. Defaults to true
+   * @param seed The seed used to shuffle the deck
+   */
   public createDeck(shuffled: boolean = true, seed: number = Math.random()) {
     Object.keys(Suit).filter(suit => {
       Object.keys(Rank).filter(rank => {
@@ -20,14 +25,26 @@ export default class Croupier {
     }
   }
 
+  /**
+   *
+   * @param amount Returns specified number of cards and takes them from the top of the deck
+   */
   public take(amount: number): Card[] {
     return this.cards.splice(-Math.abs(amount), amount);
   }
 
+  /**
+   * Returns array of cards that the croupier has
+   */
   public get Cards(): Card[] {
     return this.cards;
   }
 
+  /**
+   *
+   * @param cards The cards to shuffle
+   * @param seed The seed used to shuffle the cards
+   */
   private shuffle(cards: Card[], seed: number) {
     let currentIndex = cards.length;
     let temporaryValue;
