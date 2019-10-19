@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "yarn run lint && tsc",
-    "test": "ts-node node_modules/tape-watch/bin/tape-watch src/**/*",
+    "test:watch": "ts-node node_modules/tape-watch/bin/tape-watch src/**/*",
+    "test": "ts-node node_modules/tape/bin/tape src/**/*",
     "watch": "tsc -w",
     "lint": "tslint -p ./ --fix"
   },
