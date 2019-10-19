@@ -2,7 +2,7 @@
   "name": "croupier",
   "description": "A pack of playing cards",
   "version": "1.1.0",
-  "author": "Anthony Shuker <anthony.r.shuker@gmail.com>",
+  "author": "Anthony Shuker <anthony@emobe.uk>",
   "homepage": "https://github.com/Emobe/croupier",
   "keywords": [
     "playing cards",
@@ -23,7 +23,7 @@
   },
   "bugs": {
     "url": "https://github.com/Emobe/croupier/issues",
-    "email": "anthony.r.shuker@gmail.com"
+    "email": "anthony@emobe.uk"
   },
   "devDependencies": {
     "@types/tape": "^4.2.33",
