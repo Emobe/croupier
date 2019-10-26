@@ -1,7 +1,12 @@
 import { default as Card } from './Card';
-export declare type CardList = Set<Card>;
 export default class Deck {
     private cards;
+    /**
+     * Create a deck of cards
+     */
     constructor();
-    Cards: CardList;
+    /**
+     * Returns an array of cards in the deck
+     */
+    Cards: Card[];
 }

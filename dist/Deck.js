@@ -9,16 +9,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Card_1 = __importStar(require("./Card"));
 class Deck {
+    /**
+     * Create a deck of cards
+     */
     constructor() {
-        this.cards = new Set();
+        this.cards = [];
         Object.keys(Card_1.Suit).filter(suit => {
             Object.keys(Card_1.Rank).filter(rank => {
                 if (!isNaN(Number(rank))) {
-                    this.cards.add(new Card_1.default(Card_1.Suit[suit], Card_1.Rank[rank]));
+                    this.cards.push(new Card_1.default(Card_1.Suit[suit], Card_1.Rank[rank]));
                 }
             });
         });
     }
+    /**
+     * Returns an array of cards in the deck
+     */
     get Cards() {
         return this.cards;
     }

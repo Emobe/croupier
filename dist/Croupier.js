@@ -1,19 +1,58 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Deck_1 = __importDefault(require("./Deck"));
+const Card_1 = __importStar(require("./Card"));
 class Croupier {
-    createDeck(shuffled = true) {
-        const deck = new Deck_1.default();
-        if (shuffled) {
-            this.shuffle(deck);
-        }
-        return deck;
+    constructor() {
+        this.cards = [];
     }
-    shuffle(deck, seed = Math.random()) {
-        const cards = Array.from(deck.Cards);
+    /**
+     *
+     * @param shuffled Whether the deck should be shuffled or not. Defaults to true
+     * @param seed The seed used to shuffle the deck
+     */
+    createDeck(shuffled = true, seed = Math.random()) {
+        Object.keys(Card_1.Suit).filter(suit => {
+            Object.keys(Card_1.Rank).filter(rank => {
+                if (!isNaN(Number(rank))) {
+                    this.cards.push(new Card_1.default(Card_1.Suit[suit], Card_1.Rank[rank]));
+                }
+            });
+        });
+        if (shuffled) {
+            this.shuffle(this.cards, seed);
+        }
+    }
+    /**
+     *
+     * @param amount Returns specified number of cards and takes them from the top of the deck
+     */
+    take(amount) {
+        return this.cards.splice(-Math.abs(amount), amount);
+    }
+    dealTo(players, cb) {
+        players.forEach(player => {
+            cb(this.take(1));
+        });
+    }
+    /**
+     * Returns array of cards that the croupier has
+     */
+    get Cards() {
+        return this.cards;
+    }
+    /**
+     *
+     * @param cards The cards to shuffle
+     * @param seed The seed used to shuffle the cards
+     */
+    shuffle(cards, seed) {
         let currentIndex = cards.length;
         let temporaryValue;
         let randomIndex;
@@ -23,12 +62,7 @@ class Croupier {
             temporaryValue = cards[currentIndex];
             cards[currentIndex] = cards[randomIndex];
             cards[randomIndex] = temporaryValue;
-            deck.Cards = new Set(cards);
         }
-    }
-    take(amount, deck) {
-        const cards = Array.from(deck.Cards);
-        return cards.splice(-Math.abs(amount), amount);
     }
 }
 exports.default = Croupier;
