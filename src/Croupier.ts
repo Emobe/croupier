@@ -33,6 +33,12 @@ export default class Croupier {
     return this.cards.splice(-Math.abs(amount), amount);
   }
 
+  public dealTo(players: any[], cb: (card: Card[]) => void) {
+    players.forEach(player => {
+      cb(this.take(1));
+    });
+  }
+
   /**
    * Returns array of cards that the croupier has
    */
