@@ -135,3 +135,16 @@ test('croupier.take(2) should take top two cards', t => {
   t.deepEqual(result, expected);
   t.end();
 });
+
+test('croupier.dealTo should deal a card to callback per player', t => {
+  const players = [1, 2, 3, 4, 5, 6];
+  const croupier = new Croupier();
+  croupier.createDeck();
+  const cards: Card[] = [];
+  croupier.dealTo(players, card => {
+    cards.push(...card);
+  });
+  const expected = players.length;
+  t.deepEqual(cards.length, expected);
+  t.end();
+});
