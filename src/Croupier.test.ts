@@ -131,7 +131,7 @@ test('croupier.take(2) should take top two cards', t => {
   const croupier = new Croupier();
   croupier.createDeck();
   const expected = [croupier.Cards[50], croupier.Cards[51]];
-  let result = croupier.take(2);
+  const result = croupier.take(2);
   t.deepEqual(result, expected);
   t.end();
 });
