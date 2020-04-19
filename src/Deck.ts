@@ -7,15 +7,10 @@ export default class Deck {
    * Create a deck of cards
    */
   constructor() {
-    Object.keys(Suit).filter(suit => {
-      Object.keys(Rank).filter(rank => {
+    Object.keys(Suit).filter((suit) => {
+      Object.keys(Rank).filter((rank) => {
         if (!isNaN(Number(rank))) {
-          this.cards.push(
-            new Card(
-              Suit[suit as keyof typeof Suit],
-              Rank[rank as keyof typeof Rank]
-            )
-          );
+          this.cards.push(new Card(Suit[suit as keyof typeof Suit], Rank[rank as keyof typeof Rank]));
         }
       });
     });

@@ -7,16 +7,11 @@ export default class Croupier {
    * @param shuffled Whether the deck should be shuffled or not. Defaults to true
    * @param seed The seed used to shuffle the deck
    */
-  public createDeck(shuffled: boolean = true, seed: number = Math.random()) {
-    Object.keys(Suit).filter(suit => {
-      Object.keys(Rank).filter(rank => {
+  public createDeck(shuffled = true, seed: number = Math.random()) {
+    Object.keys(Suit).filter((suit) => {
+      Object.keys(Rank).filter((rank) => {
         if (!isNaN(Number(rank))) {
-          this.cards.push(
-            new Card(
-              Suit[suit as keyof typeof Suit],
-              Rank[rank as keyof typeof Rank]
-            )
-          );
+          this.cards.push(new Card(Suit[suit as keyof typeof Suit], Rank[rank as keyof typeof Rank]));
         }
       });
     });
@@ -34,7 +29,7 @@ export default class Croupier {
   }
 
   public dealTo(players: any[], cb: (card: Card[]) => void) {
-    players.forEach(player => {
+    players.forEach((player) => {
       cb(this.take(1));
     });
   }

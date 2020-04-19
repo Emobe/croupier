@@ -2,7 +2,7 @@ export enum Suit {
   Diamonds = 'Diamonds',
   Spades = 'Spades',
   Hearts = 'Hearts',
-  Clubs = 'Clubs'
+  Clubs = 'Clubs',
 }
 
 export enum Rank {
@@ -18,7 +18,7 @@ export enum Rank {
   Jack = 11,
   Queen = 12,
   King = 13,
-  Ace = 14
+  Ace = 14,
 }
 
 export default class Card {

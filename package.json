@@ -18,7 +18,8 @@
     "build": "tsc",
     "test": "ts-node node_modules/tape/bin/tape tests/**/*",
     "watch": "tsc -w",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "install": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/Emobe/croupier/issues",

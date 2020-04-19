@@ -2,7 +2,7 @@ import Card from '../src/Card';
 import Croupier from '../src/Croupier';
 import test from 'tape';
 
-test('Croupier.createDeck(false) should create an unshuffled deck', t => {
+test('Croupier.createDeck(false) should create an unshuffled deck', (t) => {
   const croupier = new Croupier();
   croupier.createDeck(false);
   const expected = [
@@ -57,14 +57,14 @@ test('Croupier.createDeck(false) should create an unshuffled deck', t => {
     { suit: 'Clubs', rank: 'Jack' },
     { suit: 'Clubs', rank: 'Queen' },
     { suit: 'Clubs', rank: 'King' },
-    { suit: 'Clubs', rank: 'Ace' }
+    { suit: 'Clubs', rank: 'Ace' },
   ];
   const result = croupier.Cards;
   t.deepEqual(result, expected);
   t.end();
 });
 
-test('croupier.createDeck() should create a shuffled deck', t => {
+test('croupier.createDeck() should create a shuffled deck', (t) => {
   const croupier = new Croupier();
   croupier.createDeck(true, 0.5);
   const result = croupier.Cards;
@@ -120,13 +120,13 @@ test('croupier.createDeck() should create a shuffled deck', t => {
     { suit: 'Spades', rank: 'King' },
     { suit: 'Clubs', rank: 'King' },
     { suit: 'Spades', rank: 'Ace' },
-    { suit: 'Hearts', rank: 'Two' }
+    { suit: 'Hearts', rank: 'Two' },
   ];
   t.deepEqual(result, expected);
   t.end();
 });
 
-test('croupier.take(2) should take top two cards', t => {
+test('croupier.take(2) should take top two cards', (t) => {
   const croupier = new Croupier();
   croupier.createDeck();
   const expected = [croupier.Cards[50], croupier.Cards[51]];
@@ -135,12 +135,12 @@ test('croupier.take(2) should take top two cards', t => {
   t.end();
 });
 
-test('croupier.dealTo should deal a card to callback per player', t => {
+test('croupier.dealTo should deal a card to callback per player', (t) => {
   const players = [1, 2, 3, 4, 5, 6];
   const croupier = new Croupier();
   croupier.createDeck();
   const cards: Card[] = [];
-  croupier.dealTo(players, card => {
+  croupier.dealTo(players, (card) => {
     cards.push(...card);
   });
   const expected = players.length;
