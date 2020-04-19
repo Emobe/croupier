@@ -1,6 +1,5 @@
-import Card, { Rank, Suit } from './Card';
-import Croupier from './Croupier';
-import Deck from './Deck';
+import Card from '../src/Card';
+import Croupier from '../src/Croupier';
 import test from 'tape';
 
 test('Croupier.createDeck(false) should create an unshuffled deck', t => {

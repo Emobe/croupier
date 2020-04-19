@@ -3,7 +3,7 @@ import Card, { Rank, Suit } from './Card';
 export default class Croupier {
   private cards: Card[] = [];
   /**
-   *
+   * Creates a deck
    * @param shuffled Whether the deck should be shuffled or not. Defaults to true
    * @param seed The seed used to shuffle the deck
    */
