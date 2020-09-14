@@ -8,14 +8,13 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    "./src/**/*",
-    "typings/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.test.ts"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
+
