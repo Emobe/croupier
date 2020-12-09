@@ -22,8 +22,26 @@ export default class Deck {
   get Cards(): Card[] {
     return this.cards;
   }
+  /**
+   *
+   * @param amount Returns specified number of cards and takes them from the top of the deck
+   */
+  public take(amount: number): Card[] {
+    return this.cards.splice(-Math.abs(amount), amount);
+  }
 
-  set Cards(cards: Card[]) {
-    this.cards = cards;
+  public shuffle(seed = Math.random()): void {
+    let currentIndex = this.cards.length;
+    let temporaryValue;
+    let randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(seed * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = this.cards[currentIndex];
+      this.cards[currentIndex] = this.cards[randomIndex];
+      this.cards[randomIndex] = temporaryValue;
+    }
   }
 }
