@@ -1,63 +1,13 @@
-import Card, { Rank, Suit } from './Card';
+import Deck from './Deck';
 
 export default class Croupier {
-  private cards: Card[] = [];
-  /**
-   * Creates a deck
-   * @param shuffled Whether the deck should be shuffled or not. Defaults to true
-   * @param seed The seed used to shuffle the deck
-   */
-  public createDeck(shuffled = true, seed: number = Math.random()) {
-    Object.keys(Suit).filter(suit => {
-      Object.keys(Rank).filter(rank => {
-        if (!isNaN(Number(rank))) {
-          this.cards.push(new Card(Suit[suit as keyof typeof Suit], Rank[rank as keyof typeof Rank]));
-        }
-      });
-    });
-    if (shuffled) {
-      this.shuffle(this.cards, seed);
-    }
+  createDeck(): Deck {
+    return new Deck();
   }
 
-  /**
-   *
-   * @param amount Returns specified number of cards and takes them from the top of the deck
-   */
-  public take(amount: number): Card[] {
-    return this.cards.splice(-Math.abs(amount), amount);
-  }
-
-  public dealTo(players: any[], cb: (card: Card[]) => void) {
-    players.forEach(player => {
-      cb(this.take(1));
-    });
-  }
-
-  /**
-   * Returns array of cards that the croupier has
-   */
-  public get Cards(): Card[] {
-    return this.cards;
-  }
-
-  /**
-   *
-   * @param cards The cards to shuffle
-   * @param seed The seed used to shuffle the cards
-   */
-  private shuffle(cards: Card[], seed: number) {
-    let currentIndex = cards.length;
-    let temporaryValue;
-    let randomIndex;
-
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(seed * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = cards[currentIndex];
-      cards[currentIndex] = cards[randomIndex];
-      cards[randomIndex] = temporaryValue;
-    }
+  createShuffledDeck(): Deck {
+    const deck = new Deck();
+    deck.shuffle();
+    return deck;
   }
 }

@@ -1,0 +1,34 @@
+@startuml Croupier
+class Croupier <<Factory>> {
+  +createDeck(): Deck
+  +createShuffledDeck(seed: number): Deck
+}
+
+class Deck {
+  +cards: Array<Card>
+  +shuffle(seed: number)
+  +take(amount: number)
+  +<<get>> Cards()
+}
+
+class Card {
+  +suit: Suit
+  +rank: Rank
+}
+
+
+enum Rank
+enum Suit
+
+
+hide empty members
+hide empty methods
+
+Card --- Rank
+Card --- Suit
+
+Deck o-- Card
+Croupier ..|> Deck
+
+
+@enduml

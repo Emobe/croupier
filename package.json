@@ -1,12 +1,13 @@
 {
   "name": "croupier",
-  "description": "A pack of playing cards",
-  "version": "1.3.2",
+  "description": "A library written in Typescript to create and handle a deck of cards",
+  "version": "2.0.0",
   "author": "Anthony Shuker <anthony@emobe.uk>",
   "homepage": "https://github.com/Emobe/croupier",
   "keywords": [
     "playing cards",
-    "typescript"
+    "typescript",
+    "dealer"
   ],
   "license": "MIT",
   "main": "dist/index.js",
