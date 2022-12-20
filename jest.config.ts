@@ -9,7 +9,7 @@ export default async (): Promise<Config> => ({
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.(m)?js$': '$1',
   },
-  testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(m)?ts$',
+  testRegex: '/tests/.*.test.(js|ts|tsx)?$',
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['src/**/*.ts', 'src/**/*.mts', '!src/**/*.d.ts', '!src/**/*.d.mts'],
 });
