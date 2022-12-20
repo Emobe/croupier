@@ -9,18 +9,25 @@
     "typescript",
     "dealer"
   ],
+  "scripts": {
+    "prepublishOnly": "pnpm run build",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "ts-node node_modules/tape/bin/tape tests/**/*",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "files": [
+    "./src/**",
+    "./dist/**"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Emobe/croupier"
   },
-  "scripts": {
-    "build": "tsc",
-    "test": "ts-node node_modules/tape/bin/tape tests/**/*",
-    "watch": "tsc -w",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "install": "npm run build"
+  "engines": {
+    "node": ">=14 <=19"
   },
   "bugs": {
     "url": "https://github.com/Emobe/croupier/issues",
