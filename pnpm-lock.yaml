@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': ^13.13.0
+  '@types/node': ^18.11.17
   '@types/tape': ^4.13.0
   '@typescript-eslint/eslint-plugin': ^2.28.0
   '@typescript-eslint/parser': ^2.28.0
@@ -18,7 +18,7 @@ specifiers:
   typescript: ^4.9.4
 
 devDependencies:
-  '@types/node': registry.npmjs.org/@types/node/13.13.52
+  '@types/node': registry.npmjs.org/@types/node/18.11.17
   '@types/tape': registry.npmjs.org/@types/tape/4.13.2
   '@typescript-eslint/eslint-plugin': registry.npmjs.org/@typescript-eslint/eslint-plugin/2.34.0_q4xp7iq7k3ycw5xxnwdlcekx7e
   '@typescript-eslint/parser': registry.npmjs.org/@typescript-eslint/parser/2.34.0_aoruoc7n2duozhklcyjxy6wtei
@@ -107,10 +107,10 @@ packages:
     version: 7.0.11
     dev: true
 
-  registry.npmjs.org/@types/node/13.13.52:
-    resolution: {integrity: sha512-s3nugnZumCC//n4moGGe6tkNMyYEdaDBitVjwPxXmR5lnMG5dHePinH2EdxkG3Rh1ghFHHixAG4NJhpJW1rthQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-13.13.52.tgz}
+  registry.npmjs.org/@types/node/18.11.17:
+    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-18.11.17.tgz}
     name: '@types/node'
-    version: 13.13.52
+    version: 18.11.17
     dev: true
 
   registry.npmjs.org/@types/parse-json/4.0.0:
@@ -124,7 +124,7 @@ packages:
     name: '@types/tape'
     version: 4.13.2
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/13.13.52
+      '@types/node': registry.npmjs.org/@types/node/18.11.17
     dev: true
 
   registry.npmjs.org/@typescript-eslint/eslint-plugin/2.34.0_q4xp7iq7k3ycw5xxnwdlcekx7e:
