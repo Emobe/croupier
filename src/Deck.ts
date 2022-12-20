@@ -12,7 +12,7 @@ export default class Deck {
   /**
    * Create a deck of cards
    */
-  constructor(options: DeckOptions) {
+  constructor(options: DeckOptions = {}) {
     // TODO add jokers
     const { seed = Math.random(), shuffle = true } = options;
     for (const suit of suits) {
@@ -39,7 +39,6 @@ export default class Deck {
   }
 
   public shuffle(seed = Math.random()): void {
-    console.log('shuffling', seed);
     let currentIndex = this.cards.length;
     let temporaryValue;
     let randomIndex;

@@ -2,6 +2,10 @@ import { mockDeck, mockShuffledDeck } from './deck.mocks';
 import Deck from '../src/Deck';
 
 describe('Deck', () => {
+  it('should create a deck with no options passed', () => {
+    const deck = new Deck();
+    expect(deck).toBeTruthy();
+  });
   it('should create a deck of unshuffled cards', () => {
     const deck = new Deck({ shuffle: false });
     expect(deck.Cards).toEqual(mockDeck);
