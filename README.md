@@ -5,13 +5,13 @@
 ## Usage
 
 ```typescript
-import Croupier from 'croupier';
+import { Deck } from 'croupier';
 
-const croupier = new Croupier();
+const deck = new Deck();
+console.log(deck.Count);
 
-const deck = Croupier.createShuffledDeck();
+const handOne = deck.take(2);
 
-const hand = deck.take(2);
-
-console.log(hand);
+console.log(deck.Count);
+console.log(handOne);
 ```
