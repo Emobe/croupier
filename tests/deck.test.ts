@@ -1,39 +1,28 @@
 import { mockDeck, mockShuffledDeck } from './deck.mocks';
 import Deck from '../src/Deck';
-import { Rank } from '../src/Card';
 
 describe('Deck', () => {
-  it('should create a deck with 52 cards', () => {
-    const deck = new Deck({shuffle: false});
-    expect(deck.Count).toBe(52);
-  });
-});
-
-// TODO make it check an actual seed
-describe('Deck Shuffle', () => {
-  it('should shuffle the deck of cards', () => {
-    const deck = new Deck({ shuffle: false });
-    const firstCardPreShuffle = deck.Cards[0];
-    deck.shuffle();
-    const firstCardPostShuffle = deck.Cards[0];
-
-    expect(firstCardPreShuffle).not.toEqual(firstCardPostShuffle);
-  });
-});
-
-fdescribe('Deck Enum Tes', () => {
-    const deck = new Deck({ shuffle: false });
-    const firstCardPreShuffle = deck.Cards[0];
-    expect(firstCardPreShuffle.rank).toBe(Rank.Two);
-
-});
-
-describe('Take Cards from Deck', () => {
-  it('should take the specified number of cards from the deck', () => {
+  it('should create a deck with no options passed', () => {
     const deck = new Deck();
-    const cardsTaken = deck.take(5);
-    
-    expect(cardsTaken.length).toBe(5);
-    expect(deck.Count).toBe(47);
+    expect(deck).toBeTruthy();
+  });
+  it('should create a deck of unshuffled cards', () => {
+    const deck = new Deck({ shuffle: false });
+    expect(deck.Cards).toEqual(mockDeck);
+  });
+
+  it('should create a shuffled deck of cards with specified seed', () => {
+    const seed = 0.5;
+    const deck = new Deck({ seed });
+    expect(deck.Cards).toEqual(mockShuffledDeck);
+  });
+
+  it('should be able to take X amount of cards from the deck', () => {
+    const seed = 0.5;
+    const deck = new Deck({ seed });
+    const countToTake = 5;
+    const hand = deck.take(countToTake);
+    expect(hand).toHaveLength(countToTake);
+    expect(deck.Count).toEqual(47);
   });
 });
