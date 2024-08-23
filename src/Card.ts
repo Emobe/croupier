@@ -23,7 +23,7 @@
 
 export const suits = ['diamonds', 'spades', 'hearts', 'clubs'] as const;
 
-export type Suit = typeof suits[number];
+export type Suit = (typeof suits)[number];
 
 export const ranks = [
   'two',
@@ -41,7 +41,7 @@ export const ranks = [
   'ace',
 ] as const;
 
-export type Rank = typeof ranks[number];
+export type Rank = (typeof ranks)[number];
 
 export default class Card {
   public suit: Suit;

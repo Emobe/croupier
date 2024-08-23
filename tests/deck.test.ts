@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'bun:test';
 import { mockDeck, mockShuffledDeck } from './deck.mocks';
 import Deck from '../src/Deck';
 
