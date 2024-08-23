@@ -1,4 +1,4 @@
-import { default as Card, Rank, Suit, ranks, suits } from './Card';
+import { default as Card, type Rank, type Suit, ranks, suits } from './Card';
 
 interface DeckOptions {
   seed?: number;
@@ -35,6 +35,9 @@ export default class Deck {
   }
 
   public take(amount: number): Card[] {
+    if (amount > this.cards.length) {
+      throw new Error('Cannot take more cards than what is available');
+    }
     return this.cards.splice(-Math.abs(amount), amount);
   }
 

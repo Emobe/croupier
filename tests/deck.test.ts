@@ -26,4 +26,10 @@ describe('Deck', () => {
     expect(hand).toHaveLength(countToTake);
     expect(deck.Count).toEqual(47);
   });
+  it('should throw an error when user tries to take more cards than are left', () => {
+    const seed = 0.5;
+    const deck = new Deck({ seed });
+    const countToTake = 55;
+    expect(() => deck.take(countToTake)).toThrow();
+  });
 });
