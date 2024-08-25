@@ -1,4 +1,4 @@
-import { default as Card, type Rank, type Suit, ranks, suits } from './Card';
+import { default as Card, ranks, suits } from './Card';
 
 interface DeckOptions {
   seed?: number;
@@ -13,16 +13,24 @@ export default class Deck {
    * Create a deck of cards
    */
   constructor(options: DeckOptions = {}) {
-    // TODO add jokers
     const { seed = Math.random(), shuffle = true } = options;
     for (const suit of suits) {
-      for (const rank of ranks) {
-        this.cards.push(new Card(suit, rank));
+      if (suit !== 'joker') {
+        for (const rank of ranks) {
+          if (rank !== 'joker') {
+            this.cards.push(new Card(suit, rank));
+          }
+        }
       }
-    }
 
-    if (shuffle) {
-      this.shuffle(seed);
+      if (options.jokers) {
+        this.cards.unshift(new Card('joker', 'joker'));
+        this.cards.unshift(new Card('joker', 'joker'));
+      }
+
+      if (shuffle) {
+        this.shuffle(seed);
+      }
     }
   }
 
