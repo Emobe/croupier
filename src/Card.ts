@@ -21,7 +21,7 @@
 //  Ace = 14,
 //}
 
-export const suits = ['diamonds', 'spades', 'hearts', 'clubs'] as const;
+export const suits = ['diamonds', 'spades', 'hearts', 'clubs', 'joker'] as const;
 
 export type Suit = (typeof suits)[number];
 
@@ -39,6 +39,7 @@ export const ranks = [
   'queen',
   'king',
   'ace',
+  'joker',
 ] as const;
 
 export type Rank = (typeof ranks)[number];
@@ -50,5 +51,9 @@ export default class Card {
   constructor(suit: Suit, rank: Rank) {
     this.suit = suit;
     this.rank = rank;
+  }
+
+  toString() {
+    return `${this.rank} of ${this.suit}`;
   }
 }
