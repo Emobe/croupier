@@ -1,66 +1,68 @@
-import { default as Card, ranks, suits } from './Card';
+import { CardImpl } from './Card';
+import type { Card, Suit, Rank } from './Card';
 
-interface DeckOptions {
-  seed?: number;
-  shuffle?: boolean;
-  jokers?: boolean;
-}
+export class Deck {
+  private cards: Card[];
+  private readonly suits: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
+  private readonly ranks: Rank[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-export default class Deck {
-  private cards: Card[] = [];
+  constructor() {
+    this.cards = [];
+    this.createDeck();
+  }
 
-  /**
-   * Create a deck of cards
-   */
-  constructor(options: DeckOptions = {}) {
-    const { seed = Math.random(), shuffle = true } = options;
-    for (const suit of suits) {
-      if (suit !== 'joker') {
-        for (const rank of ranks) {
-          if (rank !== 'joker') {
-            this.cards.push(new Card(suit, rank));
-          }
-        }
-      }
-
-      if (options.jokers) {
-        this.cards.unshift(new Card('joker', 'joker'));
-        this.cards.unshift(new Card('joker', 'joker'));
-      }
-
-      if (shuffle) {
-        this.shuffle(seed);
+  private createDeck(): void {
+    for (const suit of this.suits) {
+      for (const rank of this.ranks) {
+        this.cards.push(new CardImpl(suit, rank));
       }
     }
   }
 
-  get Cards(): Card[] {
-    return this.cards;
+  shuffle(): void {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+    }
   }
 
-  get Count(): number {
+  deal(): Card | undefined {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this.cards.pop();
+  }
+
+  isEmpty(): boolean {
+    return this.cards.length === 0;
+  }
+
+  size(): number {
     return this.cards.length;
   }
 
-  public take(amount: number): Card[] {
-    if (amount > this.cards.length) {
-      throw new Error('Cannot take more cards than what is available');
-    }
-    return this.cards.splice(-Math.abs(amount), amount);
+  reset(): void {
+    this.cards = [];
+    this.createDeck();
   }
 
-  public shuffle(seed = Math.random()): void {
-    let currentIndex = this.cards.length;
-    let temporaryValue;
-    let randomIndex;
-
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(seed * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = this.cards[currentIndex];
-      this.cards[currentIndex] = this.cards[randomIndex];
-      this.cards[randomIndex] = temporaryValue;
+  // Add a method to peek at the top card without removing it
+  peek(): Card | undefined {
+    if (this.isEmpty()) {
+      return undefined;
     }
+    return this.cards[this.cards.length - 1];
+  }
+
+  // Add method to deal multiple cards
+  dealCards(count: number): Card[] {
+    const dealtCards: Card[] = [];
+    for (let i = 0; i < count && !this.isEmpty(); i++) {
+      const card = this.deal();
+      if (card) {
+        dealtCards.push(card);
+      }
+    }
+    return dealtCards;
   }
 }
