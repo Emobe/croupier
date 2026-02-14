@@ -1,5 +1,7 @@
-//import Croupier from './Croupier';
-export { default as Deck } from './Deck';
-export * from './Hand';
-export { default as Card, Rank, Suit } from './Card';
-//export default Croupier;
+// Export types
+export type { Card, Suit, Rank } from './Card';
+
+// Export classes
+export { CardImpl } from './Card';
+export { Deck } from './Deck';
+export { Hand } from './Hand';
