@@ -8,24 +8,24 @@ describe('CardImpl', () => {
     expect(card.rank).toBe('A');
   });
 
-  test('should have correct value for each rank', () => {
-    const cardA = new CardImpl('hearts', 'A');
-    expect(cardA.value).toBe(14);
+  test('should have correct card values', () => {
+    const ace = new CardImpl('hearts', 'A');
+    expect(ace.value).toBe(14);
 
-    const cardK = new CardImpl('spades', 'K');
-    expect(cardK.value).toBe(13);
+    const king = new CardImpl('spades', 'K');
+    expect(king.value).toBe(13);
 
-    const cardQ = new CardImpl('clubs', 'Q');
-    expect(cardQ.value).toBe(12);
+    const queen = new CardImpl('clubs', 'Q');
+    expect(queen.value).toBe(12);
 
-    const cardJ = new CardImpl('diamonds', 'J');
-    expect(cardJ.value).toBe(11);
+    const jack = new CardImpl('diamonds', 'J');
+    expect(jack.value).toBe(11);
 
-    const card10 = new CardImpl('hearts', '10');
-    expect(card10.value).toBe(10);
+    const ten = new CardImpl('hearts', '10');
+    expect(ten.value).toBe(10);
 
-    const card2 = new CardImpl('spades', '2');
-    expect(card2.value).toBe(2);
+    const two = new CardImpl('spades', '2');
+    expect(two.value).toBe(2);
   });
 
   test('should convert to string correctly', () => {
@@ -33,7 +33,7 @@ describe('CardImpl', () => {
     expect(card.toString()).toBe('A of hearts');
   });
 
-  test('should compare cards correctly', () => {
+  test('should check equality correctly', () => {
     const card1 = new CardImpl('hearts', 'A');
     const card2 = new CardImpl('hearts', 'A');
     const card3 = new CardImpl('spades', 'A');
@@ -44,7 +44,7 @@ describe('CardImpl', () => {
     expect(card1.equals(card4)).toBe(false);
   });
 
-  test('should check suit equality correctly', () => {
+  test('should check same suit correctly', () => {
     const card1 = new CardImpl('hearts', 'A');
     const card2 = new CardImpl('hearts', 'K');
     const card3 = new CardImpl('spades', 'A');
@@ -53,7 +53,7 @@ describe('CardImpl', () => {
     expect(card1.isSameSuit(card3)).toBe(false);
   });
 
-  test('should check rank equality correctly', () => {
+  test('should check same rank correctly', () => {
     const card1 = new CardImpl('hearts', 'A');
     const card2 = new CardImpl('spades', 'A');
     const card3 = new CardImpl('hearts', 'K');
