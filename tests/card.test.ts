@@ -1,6 +1,5 @@
 import { test, describe, expect } from 'bun:test';
 import { CardImpl, type Card, type Suit, type Rank } from '../src/Card';
-import { Deck } from '../src/Deck';
 
 describe('CardImpl', () => {
   test('should create a card with correct suit and rank', () => {
@@ -62,13 +61,4 @@ describe('CardImpl', () => {
     expect(card1.isSameRank(card2)).toBe(true);
     expect(card1.isSameRank(card3)).toBe(false);
   });
-
-  test('should handle predetermined shuffle', () => {
-    const deck = new Deck();
-    deck.shuffle(12345);
-    const card1 = deck.deal();
-    if(card1) {
-      expect(card1.value).toBe(3);
-    }
-  })
 });
