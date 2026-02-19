@@ -8,10 +8,8 @@
 import { Deck } from 'croupier';
 
 const deck = new Deck();
-console.log(deck.Count);
+console.log(deck.size());
 
-const handOne = deck.take(2);
-
-console.log(deck.Count);
-console.log(handOne);
+const card = deck.deal()
+console.log(card);
 ```
