@@ -46,7 +46,6 @@ export class Deck {
     this.createDeck();
   }
 
-  // Add a method to peek at the top card without removing it
   peek(): Card | undefined {
     if (this.isEmpty()) {
       return undefined;
@@ -54,7 +53,6 @@ export class Deck {
     return this.cards[this.cards.length - 1];
   }
 
-  // Add method to deal multiple cards
   dealCards(count: number): Card[] {
     const dealtCards: Card[] = [];
     for (let i = 0; i < count && !this.isEmpty(); i++) {
